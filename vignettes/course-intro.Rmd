@@ -1,0 +1,103 @@
+---
+title: "Course Introduction"
+output: 
+  rmarkdown::html_vignette:
+    toc: true
+    
+vignette: >
+  %\VignetteIndexEntry{Course Intro}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#ws>"
+)
+```
+
+```{r setup}
+library(Intro2MLR)
+```
+
+
+# Introduction
+
+This package is designed mainly for those who have completed an introductory course of statistics -- this would include such topics as:
+
+> 
+  1. variables
+  2. probability
+  3. probability functions -- discrete random variables
+  5. probability density functions -- continuous random variables
+  6. bivariates -- both probability and density bivariate functions
+  7. point and interval estimation
+  8. hypothesis testing
+  10. t - tests
+  11. SLR - Simple Linear Regression
+  
+In addition some background in linear algebra would be helpful, though not essential if you are prepared to put in the extra work to get up to speed in this area of mathematics.
+
+## Other topics needed
+
+Having a good background in R will be of tremendous help to you since all statistical computing will be done via the ide RStudio.
+
+This includes familiartity with the production of professional and polished final documents knitted from R markdown into HTML.
+
+## Text
+
+The text we will use is the same one students use for the OU course MATH 4753 *Applied Statistical Methods*, namely **Statistics for Engineering and the Sciences** sixth edition, by Mendenhall and Sincich
+
+<center>
+![](https://images.routledge.com/common/jackets/amazon/978149872/9781498728850.jpg){ width=20%}
+</center>
+
+Resources for the book can be obtained [here](https://www.routledge.com/Statistics-for-Engineering-and-the-Sciences/Mendenhall-Sincich/p/book/9781498728850)
+
+We will cover chapters 9,11-17.
+
+## Other theoretical and practical instruction
+
+The course will be embellished heavily with additional resources. Much of the theoretical proof will be taught in class and also readings assigned outside of the text book.
+
+## Work load
+
+We will cover most of what is needed in one semester. To facilitate the uptake and understanding of the topics there is a necessary course load:
+
+>
+  1. 4 Assignments -- these will be spaced unevenly through the semester andinclude problems from the text (MS 6th edition)
+  2. 10 or more Labs -- mostly one per week
+  3. Class mini-labs -- these will be assigned as required
+  4. In class quizzes
+  5. Chapter quizzes -- these will take the form of CANVAS quizzes
+  6. 2 Projects
+  7. 2 mid term exams
+  8. Final exam
+  
+  
+# R skills
+
+This course will innovate on R's continual development by means of new packages built on Advanced R meta programming techniques (programming on code as data).
+
+Your responsibility will be to advance your understanding and ability by perfecting the following:
+
+>
+  1. [Functional programming](https://adv-r.hadley.nz/functions.html)
+  2. [Package making](https://r-pkgs.org/)
+      + [Vignette full documentation using r markdown](https://r-pkgs.org/vignettes.html)
+      + [R function documentation complete and useful](https://r-pkgs.org/man.html#man-functions)
+  3. [Shiny server implementation](https://shiny.rstudio.com/tutorial/#written-tutorials)
+      + Extensive use of appropriate widgets
+      + Dynamic and on topic plots
+  4. [Warning through conditioning -- creating more robust and self contained functions](https://adv-r.hadley.nz/conditions.html) 
+  5. [S3 Object Oriented Programming](https://adv-r.hadley.nz/s3.html)
+  6. Using R formulae `y~x1+x2+ x1:x2`
+  7. Interpret all output
+  8. Master the statistical theory
+
+  
+# Conclusion
+
+The course is intensive and very worthwhile with the possibility that you will become power R users and power statisticians.
+Good luck!!

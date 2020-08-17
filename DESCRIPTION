@@ -1,11 +1,22 @@
 Package: Intro2MLR
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Introduction to MLR
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Author: Wayne S Stewart
+Maintainer: Wayne S Stewart <wayne.s.stewart@ou.edu>
+Description: Contains notes, labs, 
+  assignments and extra help on MLR and other models.
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
+URL: https://github.com/MATHSTATSOU/Intro2MLR
+BugReports: https://github.com/MATHSTATSOU/Intro2MLR/issues
+Imports:
+    flexdashboard,
+    plotly,
+    dygraphs
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
+RoxygenNote: 7.1.1

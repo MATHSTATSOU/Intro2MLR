@@ -1,0 +1,55 @@
+---
+title: "R-models"
+
+output: 
+    rmarkdown::html_vignette:
+      toc: true
+vignette: >
+  %\VignetteIndexEntry{R-models}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#ws>"
+)
+```
+
+```{r setup}
+library(Intro2MLR)
+```
+
+
+# Introduction
+
+This course is primarily about the model MLR, Multiple Linear Regression. The theory behind this model will be developed in detail. This will enable us to extend and refine our knowledge base to include other related models. 
+
+The difficulty is that this will require some time. To facilitate an appreciation of statistical techniques and methods we will cover more models than what we rigorously prove.
+
+The generalized linear model is one which will help us solve a class of problems where the distribution of the random response is a member of the **exponential family**. 
+
+This is interesting in itself, since this will include some response variables that are discrete and others that are continuous. 
+
+Examples: $Y\sim Bern(p)$ and $Y\sim Gamma(\alpha,\beta)$
+
+
+See <https://en.wikipedia.org/wiki/Exponential_family> for more examples
+
+# Models
+
+The following models will be examined:
+
+>
+  1. MLR -- multiple linear regression (fixed effects)
+  2. GLM -- generalized linear model (fixed effects)
+  3. GLMM -- generalized linear mixed models ( fixed and random effects)
+  4. ANOVA -- analysis of variance
+  
+  
+# How to recognize models from data descriptions and stated questions
+
+
+
