@@ -66,7 +66,7 @@ The course will be embellished heavily with additional resources. Much of the th
 We will cover most of what is needed in one semester. To facilitate the uptake and understanding of the topics there is a necessary course load:
 
 >
-  1. 4 Assignments -- these will be spaced unevenly through the semester andinclude problems from the text (MS 6th edition)
+  1. 4 Assignments -- these will be spaced unevenly through the semester and include problems from the text (MS 6th edition)
   2. 10 or more Labs -- mostly one per week
   3. Class mini-labs -- these will be assigned as required
   4. In class quizzes
@@ -95,6 +95,7 @@ Your responsibility will be to advance your understanding and ability by perfect
   6. Using R formulae `y~x1+x2+ x1:x2`
   7. Interpret all output
   8. Master the statistical theory
+  9. [Use `flexdashboard` well](https://rmarkdown.rstudio.com/flexdashboard/) 
 
   
 # Conclusion
