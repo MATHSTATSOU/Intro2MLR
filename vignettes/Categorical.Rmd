@@ -1,0 +1,73 @@
+---
+title: "Categorical Variables"
+
+output: 
+    rmarkdown::html_vignette:
+      toc: true
+vignette: >
+  %\VignetteIndexEntry{categorical}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#ws>"
+)
+```
+
+```{r setup}
+library(Intro2MLR)
+```
+
+
+# Introduction
+
+The use of categorical variables is an important part of MLR and regression in general. Therefore we must learn about them and the multinomial.
+
+## Example 1 MS pg 448 9.8
+
+### Prepare the data as a table
+
+```{r}
+data(irr)
+irr
+irr$FREQ -> opinion
+names(opinion) <- irr$STRATEGY
+opinion <- as.table(opinion)
+opinion
+```
+
+### Now analyze
+
+Suppose we wish to test the NULL hypothesis
+
+$$H_0:p_i = 1/5,\;\;\forall i\in\{1,\ldots,5\}$$
+
+```{r}
+test <-chisq.test(opinion)
+test
+```
+
+## Conclusion
+
+We do not have sufficient evidence at the 0.05 level to reject the NULL hypothesis and so we retain it as plausibly true given the data.
+
+## Going further
+
+You can investigate the $\chi^2$ test and associated statistics further by looking at the output
+
+```{r}
+names(test)
+```
+Notice that there are some very useful components that make up the test.
+
+### The expected values $E(n_i)$
+
+```{r}
+test$expected
+```
+
+These are calculated under the assumption that the NULL hypothesis is correct

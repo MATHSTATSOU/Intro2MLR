@@ -1,0 +1,45 @@
+---
+  title: "Column Orientation"
+  output: flexdashboard::flex_dashboard
+---
+
+# Page 1
+
+  Column
+-------------------------------------
+
+### Chart 1
+
+  ```{r}
+  library(ggplot2)
+  ddt <-Intro2R::ddt
+  
+  g <- ggplot(ddt, aes(x=DDT, y=LENGTH)) + geom_point()
+  g <- g + stat_smooth(method = "loess", formula = 'y~x')
+  g
+```
+
+Column
+-------------------------------------
+
+### Chart 2
+
+  ```{r}
+  plot(LENGTH ~ WEIGHT,data = ddt)
+```
+
+### Chart 3
+
+```{r}
+```
+
+# Page 2
+
+## Column
+
+### Chart 4
+
+```{r}
+plot(DDT ~ WEIGHT, data =ddt)
+```
+

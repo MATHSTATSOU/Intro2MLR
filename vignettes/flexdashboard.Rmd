@@ -1,0 +1,250 @@
+---
+title: "Using Flexdashboard"
+output: 
+  rmarkdown::html_vignette:
+    toc: true
+    
+vignette: >
+  %\VignetteIndexEntry{Flexdashboard}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#ws>"
+)
+```
+
+```{r setup}
+library(Intro2MLR)
+```
+
+
+# Introduction
+
+We will often wish to present our findings at conferences and other gatherings where a good presentation of tables and graphics are required.
+
+Flexdashboard is a great way to accomplish this.
+
+To get up to speed in this area you will need to make good use of the online resources.
+
+<https://rmarkdown.rstudio.com/flexdashboard/>
+
+
+I will outline the basic ideas and you can perfect the details by inspecting the above website.
+
+
+The first thing to notice is that there is an orientation
+
+## Orientation
+
+You can either orient the document by columns (default) or rows. This can be set in the `YAML` header using the keyword `orientation` which you can set as `rows` or `columns`.
+
+### Example
+
+```
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: rows
+    
+```
+
+This will cause that all charts will populate the knitted document row-wise.
+
+Whereas the following
+
+```
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    
+```
+will populate the knitted document by columns.
+
+## The meaning of headings
+
+Normally when you make a document you would have `# Heading ` then `## Sub heading ` and then `### Sub Sub heading`
+
+In `flex_dashboard` the hashes mean something different.
+
+## Hash headings
+
+The first hash `# page` denotes a new page (this will appear in a menu)
+
+The second hash `## Column` will produce a new column if the orientation was columns. This can be denoted differently. You could use 
+```
+Column
+------------------------------------
+```
+
+The third hash `### Chart` would make space for a chart or table etc
+
+
+# Example 
+
+what would the following dashboard code produce when knitted?
+
+```
+---
+title: "Column Orientation"
+output: flexdashboard::flex_dashboard
+---
+
+    
+Column
+-------------------------------------
+    
+### Chart 1
+    
+```{r}
+```
+   
+Column
+-------------------------------------
+   
+### Chart 2
+
+```{r}
+```   
+ 
+### Chart 3
+    
+```{r}
+```
+
+```
+
+Notice that the YAML header has no orientation set. So it will be the default orientation: `columns`
+
+The second order header:
+
+```
+Column
+-------------------------------------
+    
+```
+Will prepare a column for the first chart which is set with the three hashes
+
+```
+### Chart 1
+
+```{r}
+```   
+ 
+```
+The last code produces a new column into which two charts 2, 3 will be rendered.
+
+```
+Column
+-------------------------------------
+   
+### Chart 2
+
+```{r}
+```   
+ 
+### Chart 3
+    
+```{r}
+```
+
+```
+
+# Problem 1
+
+We will use our current understanding to solve a problem.
+
+Suppose we want want to have a row of 2 charts followed by one row containing a third chart.
+
+Produce the code to make the document.
+
+
+```
+---
+title: "Problem 1"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: rows
+---
+    
+Row
+-------------------------------------
+    
+### Chart 1
+    
+```{r}
+```
+   
+   
+### Chart 2  
+
+Row
+-------------------------------------
+    
+### Chart 3
+    
+```{r}
+```
+    
+```
+
+
+# Problem 2
+
+Suppose we wish to have a large number of charts on a page. This can be accomplished by using tabsets. You probably are familiar with  these in your browsers.
+
+Produce the code that will create three tabset charts in one row and 4 tabset charts in a second row.
+
+
+```
+---
+title: "Tabset Column"
+output: flexdashboard::flex_dashboard:
+          orientation: rows
+---
+    
+Column {.tabset}
+-------------------------------------
+    
+### Chart 1
+    
+```{r}
+```
+
+### Chart 2
+    
+```{r}
+```
+
+### Chart 3
+    
+```{r}
+```
+
+
+   
+Column {.tabset}
+-------------------------------------
+   
+### Chart 4
+
+```{r}
+```   
+ 
+### Chart 5
+    
+```{r}
+```
+
+
+### Chart 6
+    
+```{r}
+```
+
+```
+
+
+
