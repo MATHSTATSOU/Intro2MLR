@@ -57,6 +57,8 @@ Resources for the book can be obtained [here](https://www.routledge.com/Statisti
 
 We will cover chapters 9,11-17.
 
+[Data](https://www.routledge.com/downloads/K25936/K25936_Downloads.zip)
+
 ## Other theoretical and practical instruction
 
 The course will be embellished heavily with additional resources. Much of the theoretical proof will be taught in class and also readings assigned outside of the text book.

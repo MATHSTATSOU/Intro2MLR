@@ -71,3 +71,63 @@ test$expected
 ```
 
 These are calculated under the assumption that the NULL hypothesis is correct
+
+
+# Two way tables
+
+We will look at the three mile island example as detailed in the book MS page 453
+
+```{r}
+data(mile3)
+
+mile3$NUMBER->freq
+mat <- matrix(freq, nrow = 2, byrow =FALSE)
+dimnames(mat) = list(c("yes", "no"), c("1-6","7-12", "13+"))
+tab <- as.table(mat)
+addmargins(tab)
+```
+
+We wish to know whether the two directions of classification are **dependent**.
+
+
+# Plotting the area
+
+To see the p-value area we can use ggplot. It helps to know that the mean of a chisquare is $\nu$ and the variance is $2\nu$.
+
+The p value is giving us evidence against the NULL hypothesis of factor independence.
+
+$$H_0: \tt{Attitude} \; \perp \; \tt{Distance}$$
+
+```{r,fig.align='center'}
+library(ggplot2)
+
+out <- chisq.test(tab)
+chiargs = list(df = out$parameter)
+g <- ggplot(data.frame(x=c(out$statistic, out$parameter+4*sqrt(2*out$parameter))), aes(x)) + 
+  stat_function(fun = dchisq, args = chiargs , geom = "area", fill = "green") 
+  
+
+g <- g + stat_function(fun = dchisq, args = chiargs, geom = "area", fill = "black",xlim = c(0,out$statistic)) 
+
+g <- g + xlab("X") + ylab("Density")
+g
+out
+1-pchisq(out$statistic,2)
+```
+
+## What happens to the cutoff as $\nu$ increases?
+
+To determine what the cut off values are we can create them using `qchisq()`
+
+```{r}
+qchisq(1-0.05, df = 1:10)
+```
+
+Can we make sense of this? If the number of cells increase so the degrees of freedom will also, since $\nu = (r-1)(c-1)$.
+
+```{r}
+q = qchisq(1-0.05, 1:20)
+diff(q)
+```
+
+
