@@ -5,7 +5,7 @@ output:
     toc: true
     
 vignette: >
-  %\VignetteIndexEntry{Course Intro}
+  %\VignetteIndexEntry{Course Introduction}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

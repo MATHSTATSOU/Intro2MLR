@@ -2,3 +2,4 @@
 
 export(myreadxl)
 export(shinyddt)
+export(shinypiece)

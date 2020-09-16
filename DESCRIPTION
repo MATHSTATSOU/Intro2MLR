@@ -14,7 +14,9 @@ BugReports: https://github.com/MATHSTATSOU/Intro2MLR/issues
 Imports:
     flexdashboard,
     plotly,
-    dygraphs
+    dygraphs,
+    purrr,
+    scatterplot3d
 Suggests: 
     knitr,
     rmarkdown
