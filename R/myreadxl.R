@@ -5,6 +5,7 @@
 #' @param dird This is the directory structure to your excel folder
 #'
 #' @return A named list of all the data read into R, each component of the list is a data frame
+#'
 #' @export
 #'
 #' @examples

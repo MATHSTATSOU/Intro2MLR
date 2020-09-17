@@ -16,7 +16,11 @@ Imports:
     plotly,
     dygraphs,
     purrr,
-    scatterplot3d
+    scatterplot3d,
+    ggplot2,
+    shiny,
+    readxl,
+    stringr
 Suggests: 
     knitr,
     rmarkdown
