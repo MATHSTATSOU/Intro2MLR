@@ -8,7 +8,7 @@
 #' @export
 #'
 #' @examples
-#' v <-myreadxl()
+#' \dontrun{v <-myreadxl()}
 myreadxl <- function(dird = "D:/MATH4773-5773/DATA/Excel/"){
 
 

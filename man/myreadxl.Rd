@@ -16,5 +16,5 @@ A named list of all the data read into R, each component of the list is a data f
 This will work well with reading in all excel files in a particular directory
 }
 \examples{
-v <-myreadxl()
+\dontrun{v <-myreadxl()}
 }
