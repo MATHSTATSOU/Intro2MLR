@@ -23,7 +23,7 @@ mynewt=function(x0,delta=0.001,f,fdash){
     y[i+1]=f(x[i+1])
     d=abs(y[i])
   }
-  windows()
+  #windows()
   curve(f(x),xlim=range(c(range(x),-range(x))),xaxt="n", main="Newton-Raphson Algorithm")
   points(x,y,col="Red",pch=19,cex=1.5)
   axis(1,x,round(x,2),las=2)
