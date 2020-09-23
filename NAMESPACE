@@ -2,6 +2,7 @@
 
 export(mynewt)
 export(myreadxl)
+export(rcwidgets)
 export(shinycondinputs)
 export(shinyddt)
 export(shinynewt)
