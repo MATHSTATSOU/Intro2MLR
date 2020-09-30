@@ -31,8 +31,10 @@ The F statistic is central to MLR and we will need to both derive and use it wel
 
 The test for model adequacy is usually presented as the test against 
 
-$$H_0: \beta_1=\beta_2=\ldots =\beta_k$$
+$$H_0: \beta_1=\beta_2=\ldots =\beta_k=0$$
 The F statistic is calculated by finding
+
+
 
 
 $$F = \frac{(RSS_{H_0}-RSS)/k}{RSS/(n-(k+1))}$$
@@ -47,3 +49,36 @@ This means that $RSS_{H_0}=TSS$
 Since $TSS=MSS + RSS$ 
 
 $$F = \frac{MSS/k}{RSS/(n-(k+1))}$$
+We will now simplify this expression in terms of $R^2= \frac{MSS}{TSS}$.
+
+The first thing to do is re-express $MSS$ and $RSS$ in terms of $R^2$
+
+
+## $R^2$
+
+$$MSS = R^2 TSS$$
+
+and 
+
+$$R^2 = 1-\frac{RSS}{TSS}$$
+Therefore
+
+$$RSS = (1-R^2)TSS$$
+
+
+
+## F as a function of $R^2$ when $H_0: \beta_1=\ldots=\beta_k=0$
+
+
+$$F = \frac{R^2TSS/k}{(1-R^2)TSS/(n-(k+1))}$$
+and hence
+
+$$F = \frac{R^2/k}{(1-R^2)/(n-(k+1))}$$
+
+# Comparing a larger model with a nested version.
+
+We developed in class the following result 
+
+$$F=\frac{(RSS_{H_0}-RSS)/(k-g)}{RSS/(n-(k+1))}$$
+
+where $H_0: Y=\beta_0 + \beta_1x_1 + \ldots + \beta_gx_g + \epsilon$
