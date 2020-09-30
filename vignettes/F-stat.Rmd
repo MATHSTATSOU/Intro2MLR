@@ -1,0 +1,49 @@
+---
+title: "The F statistic in regression"
+
+output: 
+    rmarkdown::html_vignette:
+      toc: true
+vignette: >
+  %\VignetteIndexEntry{F-stat}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#ws>"
+)
+```
+
+```{r setup}
+library(Intro2MLR)
+```
+
+
+# Introduction
+
+The F statistic is central to MLR and we will need to both derive and use it well.
+
+# Expressions for F
+
+The test for model adequacy is usually presented as the test against 
+
+$$H_0: \beta_1=\beta_2=\ldots =\beta_k$$
+The F statistic is calculated by finding
+
+
+$$F = \frac{(RSS_{H_0}-RSS)/k}{RSS/(n-(k+1))}$$
+Now $RSS_{H_0}=(Y-\hat{Y})^{'}(Y-\hat{Y})$ where $\hat{Y}$ is calculated under the assumption of $H_0$.
+
+So $Y=X\beta + \epsilon$ where $X= 1_n$ and hence $\hat{Y}=X\hat{\beta}$
+
+$$\hat{Y}=X(X^{'}X)^{-1}X^{'} Y = 1_{n}(n)^{-1}1^{'}_n Y=1/nJ_n Y=\bar{Y}$$
+
+This means that $RSS_{H_0}=TSS$
+
+Since $TSS=MSS + RSS$ 
+
+$$F = \frac{MSS/k}{RSS/(n-(k+1))}$$
