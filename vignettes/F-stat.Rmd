@@ -27,6 +27,8 @@ library(Intro2MLR)
 
 The F statistic is central to MLR and we will need to both derive and use it well.
 
+These notes are not a complete account of the derivation of the f statistic and rely completely on the class work developed previously.
+
 # Expressions for F
 
 The test for model adequacy is usually presented as the test against 
