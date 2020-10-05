@@ -10,7 +10,6 @@
 #'   \item{WEIGHT}{weight of tobacco}
 #'   \item{NICOTINE}{Nicotine in tobacco}
 #'   \item{TAR}{Tar in tobacco}
-#'   \item{SPECIES}{Fish species}
 #'    }
 #'
 #' @source \url{https://www.routledge.com/Statistics-for-Engineering-and-the-Sciences-Sixth-Edition/Mendenhall-Sincich/p/book/9781498728850}

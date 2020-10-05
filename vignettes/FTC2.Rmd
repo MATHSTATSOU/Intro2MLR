@@ -1,5 +1,5 @@
 ---
-title: "Example of multicollinearity"
+title: "multicol"
 
 output: 
     rmarkdown::html_vignette:
