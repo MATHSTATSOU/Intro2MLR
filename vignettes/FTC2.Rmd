@@ -1,0 +1,81 @@
+---
+title: "Example of multicollinearity"
+
+output: 
+    rmarkdown::html_vignette:
+      toc: true
+vignette: >
+  %\VignetteIndexEntry{multicol}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Introduction
+
+Multi-collinearity can be found in the following regression.
+
+# FTC2 data
+
+```{r,cache=TRUE}
+v<-Intro2MLR::myreadxl()
+ftc2<-v$FTC2
+rm(v)
+```
+
+
+
+## Model 1
+
+```{r}
+names(ftc2)
+fit1 <- lm(CO ~ TAR + NICOTINE + WEIGHT, data = ftc2)
+summary(fit1)
+car::vif(fit1)
+cor(ftc2[,1:3])
+```
+
+## New model
+
+We should remove the X with most variance inflation.  Note that NICOTINE is highly correlated with TAR. So we should remove NICOTINE or TAR -- we will choose to remove NICOTINE since it has the largest VIF.
+
+
+```{r}
+fit2 <- lm(CO ~ TAR + WEIGHT, data = ftc2)
+summary(fit2)
+car::vif(fit2)
+
+```
+
+## Remove WEIGHT
+
+Weight is shows very little evidence that it will impact predictions (see P value and T stats).
+
+We will remove WEIGHT
+
+
+
+```{r}
+fit3 <- lm(CO ~ TAR , data = ftc2)
+summary(fit3)
+anova(fit3,fit2)
+```
+## $R^2_a$
+
+We will now trace the adjusted R squared.
+
+```{r}
+sm1<-summary(fit1)
+sm2<-summary(fit2)
+sm3<-summary(fit3)
+sm1$adj.r.squared
+sm2$adj.r.squared
+sm3$adj.r.squared
+```
+
+The last model has the largest adjusted R squared.
+

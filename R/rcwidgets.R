@@ -1,12 +1,15 @@
 ## Only run this example in interactive R sessions
 #' How to control one widget from another
 #'
+#'
 #' @return Interactive browser with two widgets
+#'
 #' @export
 #'
 #' @examples
 #' \dontrun{rcwidgets()}
 rcwidgets <- function(){
+  library(shiny)
 if (interactive()) {
   shinyApp(
     ui = fluidPage(

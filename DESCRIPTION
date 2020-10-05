@@ -20,7 +20,8 @@ Imports:
     ggplot2,
     shiny,
     readxl,
-    stringr
+    stringr,
+    car
 Suggests: 
     knitr,
     rmarkdown,
