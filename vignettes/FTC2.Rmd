@@ -22,9 +22,8 @@ Multi-collinearity can be found in the following regression.
 # FTC2 data
 
 ```{r,cache=TRUE}
-v<-Intro2MLR::myreadxl()
-ftc2<-v$FTC2
-rm(v)
+library(Intro2MLR)
+data(ftc2)
 ```
 
 
