@@ -5,6 +5,7 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{rcwidgets()}
 rcwidgets <- function(){
 if (interactive()) {
   shinyApp(

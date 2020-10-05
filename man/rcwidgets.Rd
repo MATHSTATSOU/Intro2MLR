@@ -12,3 +12,6 @@ Interactive browser with two widgets
 \description{
 How to control one widget from another
 }
+\examples{
+\dontrun{rcwidgets()}
+}

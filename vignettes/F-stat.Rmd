@@ -91,4 +91,4 @@ We could express the NULL uses in the test as $\beta_{g+1} =\ldots =\beta_k=0$
 
 If we make $k=g+1$ then $k-g=1$ and $H_0: \beta_{g+1}=0$
 
-$$F=\frac{\chi^2_1/1}{\chi^{2}_{n-{k+1}}/(n-(k+1))}=\frac{Z^2}{\chi^{2}_{n-(k+1)}/(n-(k+1))}=T^2$$
+$$F=\frac{\chi^2_1/1}{\chi^{2}_{n-(k+1)}/(n-(k+1))}=\frac{Z^2}{\chi^{2}_{n-(k+1)}/(n-(k+1))}=T^2$$
