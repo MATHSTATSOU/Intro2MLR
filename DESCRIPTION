@@ -21,7 +21,9 @@ Imports:
     shiny,
     readxl,
     stringr,
-    car
+    car,
+    s20x,
+    corrplot
 Suggests: 
     knitr,
     rmarkdown,
