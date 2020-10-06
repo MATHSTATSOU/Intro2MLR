@@ -40,7 +40,9 @@ cor(ftc2[,1:3])
 
 ## New model
 
-We should remove the X with most variance inflation.  Note that NICOTINE is highly correlated with TAR. So we should remove NICOTINE or TAR -- we will choose to remove NICOTINE since it has the largest VIF.
+We should remove the X with most variance inflation.  Note that NICOTINE is highly correlated with TAR. So we should remove NICOTINE or TAR -- we will choose to remove NICOTINE since it has the largest VIF. We will use the `car` package calculate the VIF
+
+$$VIF_i = \frac{1}{1-R^2_i}$$
 
 
 ```{r}
@@ -63,14 +65,29 @@ fit3 <- lm(CO ~ TAR , data = ftc2)
 summary(fit3)
 anova(fit3,fit2)
 ```
-## $R^2_a$
 
-We will now trace the adjusted R squared.
+Notice that the test produced by the `anova` function produces evidence against:
+
+$$H_0: \beta_2 = 0$$
+where $\beta_2$ is the coefficient of `WEIGHT`. You need to see that this is a situation where `k-g=1` and hence the F test corresponds to a two tailed T test, where $F=T^2$.
 
 ```{r}
 sm1<-summary(fit1)
 sm2<-summary(fit2)
 sm3<-summary(fit3)
+
+sm2$coefficients[3,]
+```
+
+
+In this case $f_{calc} = t_{calc}^2 = `r sm2$coefficients[3,3]^2`$ and the two pvalues are identical.
+
+## $R^2_a$
+
+We will now trace the adjusted R squared.
+
+```{r}
+
 sm1$adj.r.squared
 sm2$adj.r.squared
 sm3$adj.r.squared
