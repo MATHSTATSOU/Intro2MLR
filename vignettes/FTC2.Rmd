@@ -21,7 +21,7 @@ Multi-collinearity can be found in the following regression.
 
 # FTC2 data
 
-```{r,cache=TRUE}
+```{r}
 library(Intro2MLR)
 data(ftc2)
 ```
