@@ -1,0 +1,194 @@
+---
+title: "FLAG"
+output:
+  html_document:
+    toc: yes
+    df_print: paged
+  rmarkdown::html_vignette:
+    toc: yes
+vignette: |
+  %\VignetteIndexEntry{FLAG} %\VignetteEngine{knitr::rmarkdown} %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, fig.align = "center",fig.width = 6)
+```
+
+# Introduction
+
+On page 627 of MS we have the account of the cost of a road construction awarded using the sealed bid system.
+
+
+# Multi-colinearity
+
+We will first investigate the predictor variables.
+
+We will remove the `STATUS` variable since it is qualitative and we wish to assess quantitative correlation using `cor`.
+
+```{r}
+library(Intro2MLR)
+library(dplyr)
+data(flag)
+nms <- names(flag)
+
+cflag <- cor(flag)
+
+cflag
+
+```
+This is helpful in many ways -- we note that some of the quantitative variables are highly correlated and that the response `COST` is correlated to a number of predictors.
+
+```{r}
+as.data.frame(cflag) %>% filter(COST>0.7 & COST < 1)
+```
+
+
+
+Even better we can make a correlation plot
+
+```{r}
+library(corrplot)
+corrplot(cflag)
+```
+
+
+
+We will remove `DAYSEST` and retain `DOTEST`. We need to investigate the relationship of the response to the qualitative variable `STATUS`
+
+```{r}
+library(ggplot2)
+flag <- flag %>% mutate(STATUS <- factor(STATUS))
+g <- ggplot(flag, aes(x = STATUS, y = COST)) + geom_point(aes(col = COST)) 
+g
+
+```
+
+The above plot shows that the mean cost changes as the levels (0 -> 1) change. We will therefore include the `STATUS` qualitative variable.
+
+# Model
+
+We will trial the following model
+
+$$ COST \sim DOTEST + STATUS + STATUS:DOTEST $$
+
+# In R
+
+```{r}
+ylm <- lm(COST ~ DOTEST + STATUS + STATUS:DOTEST, data = flag)
+summary(ylm)
+```
+
+
+We will need to investigate the validity of the model before progressing - the model as it is shows adequacy.
+
+## Validity
+
+### Normality
+
+Check on normality $H_0: \epsilon \sim N$
+
+```{r}
+library(s20x)
+normcheck(ylm, shapiro.wilk = TRUE)
+```
+
+The residuals give evidence against normality.
+
+### Constant variance
+
+```{r}
+plot(ylm, which = 1)
+```
+
+
+This is sad! Notice the fan!!!
+
+We will try transforming the response.
+
+
+```{r}
+
+
+ylm1 <- lm(log(COST) ~ DOTEST + STATUS + STATUS:DOTEST, data = flag)
+plot(ylm1, which = 1)
+
+```
+
+This worked on the fan but now we have a trend in the residuals.
+
+We will try transforming the predictor 
+
+
+```{r}
+
+ylm2 <- lm(log(COST) ~ log(DOTEST) + STATUS + STATUS:I(log(DOTEST)), data = flag)
+plot(ylm2, which = 1)
+```
+
+## Simplify model
+
+We may find that the model needs to be simplified now.
+
+```{r}
+summary(ylm2)
+```
+
+Sure enough we can remove the interaction term
+
+
+```{r}
+ylm3 <- lm(log(COST) ~ log(DOTEST) + STATUS , data = flag)
+```
+
+
+
+Now we will recheck normality
+
+```{r}
+normcheck(ylm3, shapiro.wilk = TRUE)
+```
+
+The QQ plot and Normal plot alongside are better. We still have evidence against the Normal assumption but the model has improved.
+
+# Prediction
+
+Because we have transformed two of the variables we will need to back transform our predictions to get answers on the original scale.
+
+```{r}
+summary(ylm3)
+```
+
+From the output we can write:
+
+$$\widehat{log(COST)} = -0.147 + 1.01 log(DOTEST) + 0.217 STATUS$$
+Suppose we wish to predict the road construction cost when the DOT estimate is \$370,000 this means `DOTEST=370` and contract is fixed `STATUS=1`
+
+Then you can use the above equation or use `predict`
+
+```{r}
+ans = predict(ylm3, data.frame(DOTEST=370, STATUS = 1), interval = "none")
+ans
+```
+
+
+This is on the log scale so on the original scale we will have
+
+```{r}
+exp(ans)
+```
+
+So the cost for a fixed road contract with DOT estimate of \$370,000 will be \$`r exp(ans)` thousand dollars.
+
+This is not that satisfying statistically however, since a point estimate without and interval is not even half the story.
+
+# Interval estimate
+
+The prediction interval for a new response is given below with the transformed 95\% interval.
+
+```{r}
+ans1 = predict(ylm3, data.frame(DOTEST=370, STATUS = 1), interval = "prediction")
+ans1
+exp(ans1)
+```
+
+
