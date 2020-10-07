@@ -125,6 +125,10 @@ ylm2 <- lm(log(COST) ~ log(DOTEST) + STATUS + STATUS:I(log(DOTEST)), data = flag
 plot(ylm2, which = 1)
 ```
 
+As can be seen by the plot of residuals versus fitted values there is no trend and points are evenly scattered about the horizontal axis.
+
+Cool!!
+
 ## Simplify model
 
 We may find that the model needs to be simplified now.
@@ -152,7 +156,7 @@ The QQ plot and Normal plot alongside are better. We still have evidence against
 
 # Prediction
 
-Because we have transformed two of the variables we will need to back transform our predictions to get answers on the original scale.
+Because we have transformed the response we will need to back transform our predictions to get answers on the original scale.
 
 ```{r}
 summary(ylm3)
