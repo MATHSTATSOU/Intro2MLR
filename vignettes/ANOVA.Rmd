@@ -1,0 +1,93 @@
+---
+title: "ANOVA and MLR"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{ANOVA and MLR}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  fig.width = 6,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(Intro2MLR)
+```
+
+
+# Introduction
+
+The connection between ANOVA (ANalysis Of VAriance) and MLR (Multiple Linear Regression) is a very important part of this course and must be known, mastered and used in all its applications.
+
+The central issue is the F statistic and its interpretation. The chief application is to compare a reduced "R" (nested) model with a larger and more complete "C" model.
+
+$$F = \frac{(SSE_R - SSE_C)/(k-g)}{SSE_C/(n-(k+1))}$$
+Or 
+
+$$F = \frac{(SSE_R - SSE_C)/(k-g)}{MSE_{C}}$$
+
+Please note that in terms of projection matrices
+
+$$F = \frac{Y^{'}(P_C - P_R)Y/(k-g)}{Y^{'}(I-P_C)Y/(n-(k+1))}$$
+
+# Completely randomized design
+
+In this experimental design treatments are randomly assigned to experimental units.
+
+## The model 
+
+Since there will be $p$ treatments we have:
+
+$$E(Y)=\beta_0 + \beta_1x_1 + \ldots + \beta_{p-1}x_{p-1}$$
+Since we wish to test 
+
+$$H_0: \mu_1 = \ldots =\mu_p$$
+The reduced model just includes the intercept $\beta_0$.
+
+So we have $g=0$ and 
+
+$$F=\frac{MS(Model)}{MSE}$$
+
+# The randomized block design
+
+## The model
+
+$$E(Y) = \beta_0 + \beta_1x_1+\ldots + \beta_{p-1}x_{p-1} + \beta_px_p +\ldots + \beta_{p+b-2}x_{p+b-2} $$
+where the treatment effects are $\beta_1x_1+\ldots + \beta_{p-1}x_{p-1}$ and the block effects are $\beta_px_p +\ldots + \beta_{p+b-2}x_{p+b-2}$
+
+To investigate the treatments you need a reduced model composed of the block terms.
+
+
+$$ F = \frac{(SSE_R - SSE_C)/(p-1)}{MSE_C}$$
+
+To investigate the blocks you need a reduced model made of the treatment terms.
+
+
+$$ F = \frac{(SSE_R - SSE_C)/(b-1)}{MSE_C}$$
+
+
+# Two factor factorial design
+
+Factor A has a levels, B has  b levels. Main effects for A has a-1 terms, main effects for  B has b-1 terms. Interaction terms: $(a-1)(b-1)$ terms with second order x terms $\{x_1,\ldots ,x_{a-1}\}\times \{ x_{a},\ldots x_{a+b-2}\}$
+
+Note the way the indices populate:
+
+$$E(Y) = \beta_0 + \beta_1x_1 + \cdots + \beta_{a-1}x_{a-1} + \beta_{a}x_{a}+\cdots \beta_{a+b-2}x_{a+b-2} + \beta_{a+b-1}x_{1}x_{a} +\cdots + \beta_{ab-1}x_{a-1}x_{a+b-2}$$
+
+
+
+### Example 1
+
+
+We will use some case studies from package `s20x`
+
+```{r}
+library(s20x)
+demo(s20x::cs38)
+```
+

@@ -195,4 +195,13 @@ ans1
 exp(ans1)
 ```
 
+# ANOVA
+
+You should understand the subdivision of the TSS in terms of component RSS differences in sub models.
+
+```{r}
+anova(ylm3)
+r<-residuals(ylm3)
+sum(r^2)
+```
 
