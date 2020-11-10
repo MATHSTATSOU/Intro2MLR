@@ -79,7 +79,12 @@ Note the way the indices populate:
 
 $$E(Y) = \beta_0 + \beta_1x_1 + \cdots + \beta_{a-1}x_{a-1} + \beta_{a}x_{a}+\cdots \beta_{a+b-2}x_{a+b-2} + \beta_{a+b-1}x_{1}x_{a} +\cdots + \beta_{ab-1}x_{a-1}x_{a+b-2}$$
 
+Note that $$n-(k+1) = abr-(ab-1+1)= ab(r-1)$$
 
+
+This means that the minimum replication size is calculated from:
+
+$$ab(r-1)>0, r\ge 2$$
 
 ### Example 1
 
@@ -88,6 +93,6 @@ We will use some case studies from package `s20x`
 
 ```{r}
 library(s20x)
-demo(s20x::cs38)
+demo(cs41)
 ```
 
