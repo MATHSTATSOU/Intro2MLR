@@ -197,9 +197,28 @@ sheepbayes <-  MCMCpack::MCMCregress(
                                      burnin = 1000
     
   )
-summary(sheepbayes)
-summary(sheep.fit2)
+summary(sheepbayes)# Bayesian
+summary(sheep.fit2) # Classical
 confint(sheep.fit2)
 ```
 
+## Comparison
 
+The Bayesian intervals for $\beta$ components are comparable with those obtained with the classical method.
+
+But the interpretations are very different.
+
+### Bayes interpretation
+
+Take $\beta_1= \mu_{Cob.Yes}-\mu_{Cob.No}$:
+
+With probability 0.95 the mean weight of sheep that are fed a diet that includes cobalt will have between 0.27 and 4.72kg more weight than sheep fed a diet without cobalt.
+
+### Classical interpretation
+
+Take $\beta_1$ again:
+
+With 95% confidence the mean weight of sheep that fed a diet that includes cobalt  will have between 0.30 and 4.70kg more weight than sheep fed a diet without cobalt.
+
+How could you restate this in a way to make the interval more useful?
+Hint: Use ideas of plausibility
