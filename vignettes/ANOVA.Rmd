@@ -129,7 +129,7 @@ All priors inform the posterior to some degree. If we have little prior knowledg
 
 This package will enable you to perform MLR analyses from a Bayesian perspective.
 
-The function we will invoke is called `MCMCRegress()`
+The function we will invoke is called `MCMCregress()`
 
 The posterior will be sampled using MCMC (Monte Carlo Markov Chains).
 
@@ -142,7 +142,7 @@ If you do not set priors then default low impact priors will be assigned.
 </center>
 
 
-### Look at the MCMCRegress
+### Look at the MCMCregress
 
 Note that from the details above that each $\beta$ is given the following prior
 
@@ -182,7 +182,7 @@ curve(dgamma(x,
 
 When $B_0=0$ then each $\beta$ component is given a  uniform density.
 
-This corresponds to a Normal with mean 0 and variance = infinity.
+This corresponds to a Normal with mean 0 and variance = $+\infty$.
 
 
 # Example
@@ -197,6 +197,7 @@ sheepbayes <-  MCMCpack::MCMCregress(
                                      burnin = 1000
     
   )
+
 summary(sheepbayes)# Bayesian
 summary(sheep.fit2) # Classical
 confint(sheep.fit2)
