@@ -214,7 +214,8 @@ sheepbayes <-  MCMCpack::MCMCregress(
     
   )
 
-summary(sheepbayes)# Bayesian
+sb<-summary(sheepbayes)# Bayesian
+sb
 summary(sheep.fit2) # Classical
 confint(sheep.fit2)
 ```
@@ -229,7 +230,7 @@ But the interpretations are very different.
 
 Take $\beta_1= \mu_{Cob.Yes}-\mu_{Cob.No}$:
 
-With probability 0.95 the mean weight of sheep that are fed a diet that includes cobalt will have between 0.27 and 4.72kg more weight than sheep fed a diet without cobalt.
+With probability 0.95 the mean weight of sheep that are fed a diet that includes cobalt will have between `r round(sb$quantiles[2,1],4)` and `r round(sb$quantiles[2,5],4)` Kilograms more weight than sheep fed a diet without cobalt.
 
 ### Classical interpretation
 
