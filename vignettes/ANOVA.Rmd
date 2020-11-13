@@ -184,6 +184,22 @@ When $B_0=0$ then each $\beta$ component is given a  uniform density.
 
 This corresponds to a Normal with mean 0 and variance = $+\infty$.
 
+### Documentation on hyper-parameters
+
+![](hyper-parameters-doc.png){ width=80% }
+
+Notice particularly:
+
+For the prior on $\tau = \sigma^{-2}$ taking the Gamma density:
+
+  1. $c0={\tt Shape \; parameter}$
+  2. $d0={\tt scale \; parameter}$
+
+For the prior on $\beta$ taking the Normal density:
+
+  1. $b0={\tt mean\; parameter}$
+  2. $B0={\tt precision\; parameter}$
+
 
 # Example
 
