@@ -1,0 +1,58 @@
+---
+title: "Power"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Power}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(Intro2MLR)
+```
+
+
+# Introduction
+
+Power is defined as 
+
+$$1-\beta$$
+
+Where $\beta$ is the probability of a type 2 error.
+
+# One sample known variance
+
+For the case of 
+
+$$H_0:\mu = \mu_0$$
+and 
+
+$$H_1:\mu\ne \mu_0$$
+
+We have developed the formula
+
+$$Z_\beta + Z_{\alpha/2} \approx \frac{\delta\sqrt{n}}{\sigma}$$
+where the alternate is specifically $H_1: \mu = \mu_0 +\delta$
+
+# Example
+
+## Binomial
+
+```{r,fig.width=6}
+x <- 0:10
+p <- dbinom(x, size = 10, prob = 1/2)
+names(p) <- x
+coll <- rep(c(2,1), c(7,4))
+b <- barplot(p, col = coll)
+pv <- 1-pbinom(6,10,1/2)
+pv
+text(b[8], 0.2, substitute(P(Y >= y)== pv, list(pv = pv)))
+```
+
