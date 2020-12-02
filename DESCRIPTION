@@ -23,7 +23,8 @@ Imports:
     stringr,
     car,
     s20x,
-    corrplot
+    corrplot,
+    GA
 Suggests: 
     knitr,
     rmarkdown,
