@@ -10,7 +10,7 @@ rcwidgets()
 Interactive browser with two widgets
 }
 \description{
-How to control one widget from another
+This an example of a shiny server function.
 }
 \examples{
 \dontrun{rcwidgets()}

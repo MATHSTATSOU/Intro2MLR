@@ -41,9 +41,43 @@ We have developed the formula
 $$Z_\beta + Z_{\alpha/2} \approx \frac{\delta\sqrt{n}}{\sigma}$$
 where the alternate is specifically $H_1: \mu = \mu_0 +\delta$
 
+# Example 
+
+## Plots
+
+```{r, fig.align='center', fig.asp= 1, fig.width =4}
+a <- seq(0.1,0.9, length = 100)
+b <- seq(0.1,0.9, length = 100)
+
+n <- function(x,y){
+  zha <- qnorm(1-x/2)
+  zb <- qnorm(1-y)
+  (4*(zha + zb))^2
+}
+
+z <-outer(a,b,n)
+
+GA::persp3D(a,b,z, 
+            theta = 30, phi= 30, expand = 1,
+            main = "n versus alpha and beta")
+
+```
+ 
+
+
+
 # Example
 
 ## Binomial
+
+Often we will want to find the power of a sign test. This reduces to finding the power associated with a binomial experiment.
+
+When dealing with such problems you will need to make appropriate plots. 
+
+Make  sure you can use informative annotation where calculated statistics are included. See the use of ${\tt substitute() }$
+
+
+### The pvalue 
 
 ```{r,fig.width=6}
 x <- 0:10

@@ -1,7 +1,7 @@
 ## Only run this example in interactive R sessions
-#' How to control one widget from another
+#' @title How to control one widget from another
 #'
-#'
+#' @description This an example of a shiny server function.
 #' @return Interactive browser with two widgets
 #'
 #' @export
