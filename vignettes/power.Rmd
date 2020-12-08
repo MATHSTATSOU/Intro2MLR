@@ -144,7 +144,9 @@ segments(50, 0.04, 50, 0, lwd = 4)
 xcurve = seq(40, 70, length =1000)
 ycurve = dnorm(xcurve, 50, 10)
 polygon(c(40,xcurve,70), c(0,ycurve,0), col = rgb(0,0,0.8, 0.3))
-barea<- 1-pnorm(40,50,10)
+barea10<- 1-pnorm(40,50,10)
+barea10 <- round(barea10,4)
+barea <- 1-pnorm(40,40+10/4,10)
 barea <- round(barea,4)
 text(50, 0.02, paste0("Upper tail=", barea))
 text(50, 0.045, expression(H[1]:mu == mu[0]+ delta),cex = 0.7)
@@ -152,7 +154,9 @@ text(40, 0.045, expression(H[0]:mu == mu[0]),cex = 0.7)
 ```
 
 
-In this case $\delta = 10$ corresponds to $p_a=`r barea`$
+If  $\delta = 10$ then this corresponds to $p_a=`r barea10`$
+
+In our case we have $\delta = 10/4$ and therefore $p_a = `r round(barea,4)`$
 
 
 ### Calulation of power
@@ -183,13 +187,15 @@ alpha
 
 The acceptance region is $[12,24]$
 
-With $\delta = 10$ as above we have $p_a=`r barea`$
+With $\delta = 10/4$ as above we have $p_a=`r barea`$.
 
-So the $P(Type 2 error)=\beta$ is:
+So the $P({\tt{Type\; 2 \; error}})=\beta$  and therefore the power is calculated thus:
 
 ```{r}
 pa <- barea
-pbinom(24,36,pa)-pbinom(11,36,pa)
+beta = pbinom(24,36,pa)-pbinom(11,36,pa)
+power = 1-beta
+power
 ```
 
 
@@ -198,7 +204,7 @@ Notice that we did not need the actual data!!
 #### Parametric
 
 
-Now, with $\alpha = `r alpha`$ and $\delta = 10$ the parametric test gives:
+Now, with $\alpha = `r alpha`$ and $\delta = 10/4$ the parametric test gives:
 
 $$Z_{\alpha/2} + Z_{\beta} = \frac{\sqrt{n}\delta}{\sigma}=3/2$$
 $$Z_{\beta}= 3/2 - Z_{\alpha/2}$$
