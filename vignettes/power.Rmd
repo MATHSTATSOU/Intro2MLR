@@ -185,7 +185,7 @@ The acceptance region is $[12,24]$
 
 With $\delta = 10$ as above we have $p_a=`r barea`$
 
-So the power of the test is:
+So the $P(Type 2 error)=\beta$ is:
 
 ```{r}
 pa <- barea
