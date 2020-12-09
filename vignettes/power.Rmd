@@ -194,8 +194,8 @@ So the $P({\tt{Type\; 2 \; error}})=\beta$  and therefore the power is calculate
 ```{r}
 pa <- barea
 beta = pbinom(24,36,pa)-pbinom(11,36,pa)
-power = 1-beta
-power
+spower = 1-beta #sign power
+spower
 ```
 
 
@@ -213,10 +213,23 @@ Therefore Power = $1-\beta = \tt{pnorm}(Z_{\beta})$
 
 
 ```{r}
-power = pnorm(3/2-qnorm(1-alpha/2))
-power
+ppower = pnorm(3/2-qnorm(1-alpha/2)) #parametric power
+ppower
 ```
 
 The formula did not require the actual data.
+
+# Conclusion
+
+The power for the sign test is `r spower` and that of the parametric is `r ppower`. There are some obvious questions that need to be asked.
+
+  >
+    1. Why are both power probabilities low?
+    2. Why is the parametric test more powerful than the non-parametric?
+    
+
+The first question can be answered by examining how close the NULL and alternate distributions are, With $\delta = \sigma/4$ it will require a large sample size to differentiate the two distributions.
+
+The second question is answered by looking at the quantity of information that is discarded with the sign test. As long as $Y_i> \tau$ the sign test will ascribe the same value (sign) as $Y_j > \tau + 100$. The relative size of the response has been lost.
 
 
