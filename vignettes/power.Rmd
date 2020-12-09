@@ -137,20 +137,21 @@ To calculate $p_a$  we will need to look at the original scale and distribution 
 
 ```{r,fig.width = 6, fig.align = "center"}
 curve(dnorm(x, 40, 10), xlim = c(40 - 3*10, 40 + 3*10),ylim = c(0, 0.05), ylab = "Density")
-curve(dnorm(x,50,10), col = "Blue", add = TRUE)
+curve(dnorm(x,40+10/4,10), col = "Blue", add = TRUE)
 segments(20, 0, 60, 0, lwd = 2)
 segments(40,0.04, 40,0, lwd =4)
-segments(50, 0.04, 50, 0, lwd = 4)
+segments(40+10/4, 0.04, 40+10/4, 0, lwd = 4)
 xcurve = seq(40, 70, length =1000)
-ycurve = dnorm(xcurve, 50, 10)
+ycurve = dnorm(xcurve, 40+10/4, 10)
 polygon(c(40,xcurve,70), c(0,ycurve,0), col = rgb(0,0,0.8, 0.3))
 barea10<- 1-pnorm(40,50,10)
 barea10 <- round(barea10,4)
 barea <- 1-pnorm(40,40+10/4,10)
 barea <- round(barea,4)
 text(50, 0.02, paste0("Upper tail=", barea))
-text(50, 0.045, expression(H[1]:mu == mu[0]+ delta),cex = 0.7)
+text(40+10/4, 0.050, expression(H[1]:mu == mu[0]+ delta),cex = 0.7)
 text(40, 0.045, expression(H[0]:mu == mu[0]),cex = 0.7)
+axis(1,40+10/4, "42.5", cex.axis = 0.5)
 ```
 
 
